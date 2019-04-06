@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="Lab05_Pyvovar.View.InfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lab05_Pyvovar.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Stretch">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <RadioButton GroupName="SortingInfo" Grid.Row="0" Grid.Column="0" Content="Sort by Name" Command="{Binding SortCommand}" CommandParameter="ProcessNameSort" Margin="5"/>
+                <RadioButton GroupName="SortingInfo" Grid.Row="1" Grid.Column="0" Content="Sort by Id" Command="{Binding SortCommand}" CommandParameter="IdSort" Margin="5"/>
+                <RadioButton GroupName="SortingInfo" Grid.Row="2" Grid.Column="0" Content="Sort by Is Active" Command="{Binding SortCommand}" CommandParameter="IsActiveSort" Margin="5"/>
+                <RadioButton GroupName="SortingInfo" Grid.Row="3" Grid.Column="0" Content="Sort by % CPU" Command="{Binding SortCommand}" CommandParameter="PercentageCPUSort" Margin="5"/>
+                <RadioButton GroupName="SortingInfo" Grid.Row="4" Grid.Column="0" Content="Sort by RAM" Command="{Binding SortCommand}" CommandParameter="CapacityRAMSort" Margin="5"/>
+                <RadioButton GroupName="SortingInfo" Grid.Row="0" Grid.Column="1" Content="Sort by Number of Threads" Command="{Binding SortCommand}" CommandParameter="NumberThreadsSort" Margin="5"/>
+                <RadioButton GroupName="SortingInfo" Grid.Row="1" Grid.Column="1" Content="Sort by User Name" Command="{Binding SortCommand}" CommandParameter="NameUserSort" Margin="5"/>
+                <RadioButton GroupName="SortingInfo" Grid.Row="2" Grid.Column="1" Content="Sort by Path to File" Command="{Binding SortCommand}" CommandParameter="PathToFileSort" Margin="5"/>
+                <RadioButton GroupName="SortingInfo" Grid.Row="3" Grid.Column="1" Content="Sort by Start DateTime" Command="{Binding SortCommand}" CommandParameter="StartDateTimeSort" Margin="5"/>
+
+                <Button Content="Show detail" Grid.Row="0" Grid.Column="2" Command="{Binding ShowDetailCommand}"  Margin="25, 5, 5, 5" Width="100" HorizontalAlignment="Left" />
+                <Button Content="Stop process" Grid.Row="1" Grid.Column="2" Command="{Binding StopProcessCommand}"  Margin="25, 5, 5, 5" Width="100" HorizontalAlignment="Left" />
+                <Button Content="Open Folder" Grid.Row="2" Grid.Column="2" Command="{Binding OpenFolderCommand}"  Margin="25, 5, 5, 5" Width="100" HorizontalAlignment="Left" />
+                <DataGrid ItemsSource="{Binding Processes, Mode=OneWay}" SelectedItem="{Binding SelectedProcess, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" AutoGenerateColumns="False" Margin="10" IsReadOnly="True" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding NameProcess}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Is Active" Binding="{Binding IsActive}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="% CPU" Binding="{Binding PercentageCPU}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="% RAM" Binding="{Binding PercentageRAM}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Capacity of RAM" Binding="{Binding CapacityRAM}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Number of Thread" Binding="{Binding NumberThread}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="User Name" Binding="{Binding NameUser}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Path to File" Binding="{Binding PathToFile}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Start DateTime" Binding="{Binding StartDateTimeString}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
